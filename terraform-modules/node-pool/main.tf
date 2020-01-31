@@ -1,6 +1,6 @@
 resource "google_container_node_pool" "np" {
   name       = "${var.name}"
-  zone       = "${var.zone}"
+  location = "${var.zone}"
   cluster    = "${var.cluster_name}"
   node_count = "${var.node_count}"
 

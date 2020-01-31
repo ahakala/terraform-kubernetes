@@ -1,7 +1,7 @@
 resource "google_container_cluster" "primary" {
   name               = "${var.name}"
   description        = "${var.description}"
-  zone               = "${var.zone}"
+  location = "${var.zone}"
   initial_node_count = "${var.initial_node_count}"
 
   addons_config {

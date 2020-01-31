@@ -23,7 +23,7 @@ variable "protocol" {
 
 variable "ports" {
   description = "A list of ports and/or port ranges to allow"
-  type        = "list"
+  type        = list(string)
 }
 
 variable "source_ranges" {

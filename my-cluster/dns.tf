@@ -5,13 +5,13 @@ resource "google_dns_managed_zone" "primary" {
 }
 
 resource "google_dns_record_set" "a_raddit" {
-  name = "${google_dns_managed_zone.primary.dns_name}"
+  name = google_dns_managed_zone.primary.dns_name
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.primary.name}"
+  managed_zone = google_dns_managed_zone.primary.name
 
-  rrdatas = ["${google_compute_global_address.raddit_static_ip.address}"]
+  rrdatas = [google_compute_global_address.raddit_static_ip.address]
 }
 
 resource "google_dns_record_set" "cname_raddit" {
@@ -19,9 +19,9 @@ resource "google_dns_record_set" "cname_raddit" {
   type = "CNAME"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.primary.name}"
+  managed_zone = google_dns_managed_zone.primary.name
 
-  rrdatas = ["${google_dns_managed_zone.primary.dns_name}"]
+  rrdatas = [google_dns_managed_zone.primary.dns_name]
 }
 
 resource "google_dns_record_set" "gitlab" {
@@ -30,7 +30,7 @@ resource "google_dns_record_set" "gitlab" {
   type = "A"
   ttl  = 300
 
-  managed_zone = "${google_dns_managed_zone.primary.name}"
+  managed_zone = google_dns_managed_zone.primary.name
 
-  rrdatas = ["${google_compute_address.gitlab_static_ip.address}"]
+  rrdatas = [google_compute_address.gitlab_static_ip.address]
 }
